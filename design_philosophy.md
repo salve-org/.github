@@ -16,9 +16,11 @@
   - Functions must be used at least twice otherwise they can be kept inline.
   - Functions should be kept as small as possible while maintaining maximum readability.
   - If any piece of code is repeated multiple times (even two lines), make it a function as that saves space and often even looks better.
+  - The less arguments taken, the better. Keep the interface nice and simple. Use default values where needed.
 - Classes
   - Classes should try to keep all necessary logic within the class.
   - All methods should be documented with a docstring and type hints.
+  - The less arguments taken, the better. Keep the interface nice and simple. Use default values where needed. (Duplicate of statement in functions)
 - Indentation
   - Use 4 spaces for indentation.
   - Avoid unnecessary indentation except for when the formatter requires it (E.G. long statements might be put in parentheses). If your function/method is 5/6 layers deep, it can probably be condensed. In cases of multi-nested for loops which might make that impossible, the two use rule can be broken for code cleanliness but should probably be refactored in other ways as well. This should be a last ditch effort after all other attempts to refactor fail.
