@@ -1,0 +1,42 @@
+## Salve-Org Python Code Design Philosophy
+
+- Formatting
+  - Use ruff format for formatting.
+  - Use isort for sorting imports.
+  - Use pyright for static analysis.
+- Type hints
+  - Type hints should be as descriptive as possible.
+  - All functions should have type hints.
+  - Every variable should get a type hint unless it is obvious like `x = int(some_method))`.
+  - Avoid using `Any` unless it is absolutely necessary.
+  - Do not use `Optional` or `Union` in place of `xyz | None` and `xyz | abc` respectively.
+  - Things like `List`, `Dict`, etc should be avoided in place of familiar options like `list` and `dict`.
+- Functions
+  - Functions should not be one line unless they have to be (like `Collegamento`'s `Client.__del__` which requires special logic).
+  - Functions must be used at least twice otherwise they can be kept inline.
+  - Functions should be kept as small as possible while maintaining maximum readability.
+  - If any piece of code is repeated multiple times (even two lines), make it a function as that saves space and often even looks better.
+- Classes
+  - Classes should try to keep all necessary logic within the class.
+  - All methods should be documented with a docstring and type hints.
+- Indentation
+  - Use 4 spaces for indentation.
+  - Avoid unnecessary indentation except for when the formatter requires it (E.G. long statements might be put in parentheses). If your function/method is 5/6 layers deep, it can probably be condensed. In cases of multi-nested for loops which might make that impossible, the two use rule can be broken for code cleanliness but should probably be refactored in other ways as well. This should be a last ditch effort after all other attempts to refactor fail.
+- Naming
+  - Use normal python conventions for capitalization.
+  - Use descriptive names, even if they are long.
+  - Do not use single letter variables unless they are used in a loop.
+  - No variable is truly private so do not use underscores for variables; act like they can always be viewed, because they can be.
+- Error handling
+  - Use exceptions for error handling only when the problem can't be solved inside the function/method. Try to actually fix the problem instead of giving it to the caller.
+  - Do not use `assert` for error handling, just use an if statement.
+- Imports
+  - Wherever possible, use stdlib modules.
+  - Do not use `from xyz import *`, all imports should be explicit.
+  - Use `ruff check . --fix` to remove unused imports and `isort` to sort imports and order them correctly.
+- Comments
+  - Comments should be used to explain why something is done, not what is done.
+  - Comments should be used to explain complex logic.
+  - Comments should not be used to explain the purpose of a function or class, that should be done with a docstring.
+- Other:
+  - Do not use the walrus separator. As nice and pretty as it is, it confuses people more than it helps. 
